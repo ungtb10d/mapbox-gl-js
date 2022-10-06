@@ -133,10 +133,8 @@ const testemConfig = Object.assign({}, defaultTestemConfig);
 if (process.env.RENDER) Object.assign(testemConfig, renderTestemConfig);
 
 if (process.env.CI) {
-    // Set chrome flags for CircleCI to use llvmpipe driver (see https://github.com/mapbox/mapbox-gl-js/pull/10389).
-    const ciTestemConfig = setChromeFlags([ "--disable-backgrounding-occluded-windows", "--ignore-gpu-blocklist", "--use-gl=desktop" ]);
+    const ciTestemConfig = setChromeFlags([ "--disable-backgrounding-occluded-windows" ]);
     Object.assign(testemConfig, ciTestemConfig);
-
 } else if (process.env.RENDER && process.env.USE_ANGLE && ['metal', 'gl', 'vulkan', 'swiftshader', 'gles'].includes(process.env.USE_ANGLE)) {
     // Allow setting chrome flag `--use-angle` for local development on render/query tests only.
     // Search accepted values for `--use-angle` here: https://source.chromium.org/search?q=%22--use-angle%3D%22

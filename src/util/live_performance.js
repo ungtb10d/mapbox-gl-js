@@ -82,7 +82,7 @@ function getCountersPerResourceType(resourceTimers) {
 
                     const transferSizeSupported = timer.transferSize !== undefined;
                     if (transferSizeSupported) {
-                        const resourceFetchedFromCache = (transferSize === 0);
+                        const resourceFetchedFromCache = (timer.transferSize === 0);
                         if (resourceFetchedFromCache) {
                             lazyIncrement(reqCachedCount);
                         }
